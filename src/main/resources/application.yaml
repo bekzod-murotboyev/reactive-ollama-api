@@ -1,0 +1,27 @@
+#------------------------------------------------------ SERVER CONFIGURATION ---------------------------------------------------------
+server:
+  port: ${SERVER_PORT:3232}
+
+spring:
+  application:
+    name: reactive-olama-api
+  #------------------------------------------------------ AI CONFIGURATION ---------------------------------------------------------
+  ai:
+    model:
+      chat: openai
+    openai:
+      base-url: ${AI_OLLAMA_BASE_URL:http://localhost:11434}
+      api-key: ${AI_OPENAI_API_KEY:}
+      chat:
+        options:
+          model: ${AI_OLLAMA_CHAT_MODEL:mistral}
+          temperature: ${AI_OPENAI_CHAT_TEMPERATURE:0.8}
+          output-modalities: ${AI_OPENAI_CHAT_OUTPUT_MODALITIES:text}
+          user: ${spring.application.name}
+#------------------------------------------------------ SWAGGER CONFIGURATION ---------------------------------------------------------
+springdoc:
+  api-docs:
+    enabled: ${SWAGGER_ENABLED:false}
+  swagger-ui:
+    enabled: ${SWAGGER_ENABLED:false}
+    path: /swagger
