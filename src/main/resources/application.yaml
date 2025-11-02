@@ -4,20 +4,41 @@ server:
 
 spring:
   application:
-    name: reactive-olama-api
+    name: reactive-ollama-api
+  #------------------------------------------------------ DATASOURCE CONFIGURATION ---------------------------------------------------------
+  r2dbc:
+    username: ${DB_USERNAME:}
+    password: ${DB_PASSWORD:}
+    url: r2dbc:postgresql://${DB_HOST:}:${DB_PORT:}/${DB_NAME:}
+    pool:
+      enabled: true
+      initial-size: 0
+      max-size: ${DB_MAX_CONNECTION_POOL_SIZE:5}
+      max-idle-time: 30s
+      validation-query: SELECT 1
+  #------------------------------------------------------ LIQUIBASE CONFIGURATION ----------------------------------------------------
+  liquibase:
+    enabled: true
+    url: jdbc:postgresql://${DB_HOST:}:${DB_PORT:}/${DB_NAME:}
+    user: ${DB_USERNAME:}
+    password: ${DB_PASSWORD:}
+    change-log: classpath:/db/changelog/db.changelog-main.xml
+    show-summary-output: all
   #------------------------------------------------------ AI CONFIGURATION ---------------------------------------------------------
   ai:
-    model:
-      chat: openai
     openai:
-      base-url: ${AI_OLLAMA_BASE_URL:http://localhost:11434}
+      base-url: ${AI_OPENAI_BASE_URL:http://localhost:11434}
       api-key: ${AI_OPENAI_API_KEY:}
       chat:
         options:
-          model: ${AI_OLLAMA_CHAT_MODEL:mistral}
+          model: ${AI_OPENAI_CHAT_MODEL:mistral}
           temperature: ${AI_OPENAI_CHAT_TEMPERATURE:0.8}
           output-modalities: ${AI_OPENAI_CHAT_OUTPUT_MODALITIES:text}
           user: ${spring.application.name}
+    ollama:
+      base-url: ${AI_OLLAMA_BASE_URL:http://localhost:11434}
+      chat:
+        model: ${AI_OLLAMA_CHAT_MODEL:mistral}
 #------------------------------------------------------ SWAGGER CONFIGURATION ---------------------------------------------------------
 springdoc:
   api-docs:

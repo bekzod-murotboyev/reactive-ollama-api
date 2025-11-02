@@ -7,7 +7,6 @@ public class AIUtils {
 
 
     public static final String CHAT_CLIENT_PROMPT_RULE = """
-            
             Rules: \
             1. You will receive the user's question as a text; \
             2. Answer directly and concisely. Do NOT greet. Do NOT ask what they need; \
