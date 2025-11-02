@@ -31,8 +31,8 @@ spring:
       api-key: ${AI_OPENAI_API_KEY:}
       chat:
         options:
-          model: ${AI_OPENAI_CHAT_MODEL:mistral}
-          temperature: ${AI_OPENAI_CHAT_TEMPERATURE:0.8}
+          model: ${AI_OPENAI_CHAT_MODEL:gpt-oss:120b-cloud}
+          temperature: ${AI_OPENAI_CHAT_TEMPERATURE:0}
           output-modalities: ${AI_OPENAI_CHAT_OUTPUT_MODALITIES:text}
           user: ${spring.application.name}
     ollama:

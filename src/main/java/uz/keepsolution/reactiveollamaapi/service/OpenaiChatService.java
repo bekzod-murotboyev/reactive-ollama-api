@@ -1,5 +1,6 @@
 package uz.keepsolution.reactiveollamaapi.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.stereotype.Service;
@@ -9,16 +10,11 @@ import uz.keepsolution.reactiveollamaapi.entity.ChatMessageEntity;
 import uz.keepsolution.reactiveollamaapi.repository.ChatMessageRepository;
 
 @Service
-public class ChatService {
+@RequiredArgsConstructor
+public class OpenaiChatService {
 
     private final ChatClient chatClient;
     private final ChatMessageRepository messageRepository;
-
-    public ChatService(ChatClient chatClient,
-                       ChatMessageRepository messageRepository) {
-        this.chatClient = chatClient;
-        this.messageRepository = messageRepository;
-    }
 
     public Flux<ServerSentEvent<String>> stream(String question) {
         Flux<String> response = chatClient

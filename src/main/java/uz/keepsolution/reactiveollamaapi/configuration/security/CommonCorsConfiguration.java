@@ -1,4 +1,4 @@
-package uz.keepsolution.reactiveollamaapi.configuration;
+package uz.keepsolution.reactiveollamaapi.configuration.security;
 
 import java.util.List;
 import org.springframework.context.annotation.Bean;
