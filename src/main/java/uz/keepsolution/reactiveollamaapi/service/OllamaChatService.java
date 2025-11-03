@@ -77,7 +77,7 @@ public class OllamaChatService {
                         .content())
                 .subscribeOn(Schedulers.boundedElastic())
                 .filter(Objects::nonNull)
-                .map(mathStructuredOutputConverter::convert);
+                .mapNotNull(mathStructuredOutputConverter::convert);
     }
 
     public Mono<String> blocking(String question) {
@@ -102,7 +102,7 @@ public class OllamaChatService {
                 )
                 .subscribeOn(Schedulers.boundedElastic())
                 .filter(Objects::nonNull)
-                .map(visionOutputConverter::convert);
+                .mapNotNull(visionOutputConverter::convert);
     }
 
     public ByteArrayResource toByteArrayBlocking(FilePart filePart) {
