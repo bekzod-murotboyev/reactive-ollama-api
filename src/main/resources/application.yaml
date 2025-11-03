@@ -37,8 +37,6 @@ spring:
           user: ${spring.application.name}
     ollama:
       base-url: ${AI_OLLAMA_BASE_URL:http://localhost:11434}
-      chat:
-        model: ${AI_OLLAMA_CHAT_MODEL:mistral}
 #------------------------------------------------------ SWAGGER CONFIGURATION ---------------------------------------------------------
 springdoc:
   api-docs:

@@ -18,7 +18,7 @@ public class OpenaiController {
 
     private final OpenaiChatService service;
 
-    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/streaming",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ServerSentEvent<String>> stream(@RequestParam String q) {
         return service.stream(q);
     }
