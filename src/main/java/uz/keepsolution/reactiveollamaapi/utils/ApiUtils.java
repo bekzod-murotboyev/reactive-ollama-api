@@ -9,4 +9,6 @@ public class ApiUtils {
     public static final String CHAT="/chats";
     public static final String OPENAI="/openai";
     public static final String OLLAMA="/ollama";
+    public static final String REPLICATE="/replicate";
+    public static final String WEBHOOK="/webhook";
 }

@@ -15,7 +15,7 @@ public class AIUtils {
 
     public static final String VISION_CLIENT_PROMPT_RULE = """
             You are a professional fashion art director.
-            Your task is to identify the product in the image and create 3 detailed prompts for generating images of that product.
+            Your task is to identify the product in the image and create 1 detailed prompts for generating images of that product.
             The prompts should be in the style of fashion photography (editorial/luxury/street/lifestyle),
             as realistic as possible, describing the lighting, textures, and atmosphere.
             

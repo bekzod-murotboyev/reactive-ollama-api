@@ -1,4 +1,4 @@
-package uz.keepsolution.reactiveollamaapi.configuration.ai;
+package uz.keepsolution.reactiveollamaapi.configuration.ai.openai;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;

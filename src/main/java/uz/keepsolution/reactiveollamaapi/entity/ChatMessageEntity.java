@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class ChatMessageEntity {
     private Long id;
     private String question;
     private String response;
+    @Column("created_at")
     private LocalDateTime createdAt;
 
     public ChatMessageEntity(String question, String response) {

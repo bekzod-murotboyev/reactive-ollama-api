@@ -5,6 +5,7 @@ import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaModel;
 import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import uz.keepsolution.reactiveollamaapi.dto.ai.MathStructuredResponseDTO;
@@ -42,7 +43,7 @@ public class OllamaChatModelConfiguration {
     }
 
     @Bean(VISION_CHAT_MODEL)
-    public OllamaChatModel visionChatModel(OllamaApi ollamaApi, BeanOutputConverter<VisionResponseDTO> outputConverter) {
+    public OllamaChatModel visionChatModel(@Qualifier(OllamaApiConfiguration.VISION_API) OllamaApi ollamaApi, BeanOutputConverter<VisionResponseDTO> outputConverter) {
         return OllamaChatModel
                 .builder()
                 .ollamaApi(ollamaApi)

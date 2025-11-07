@@ -1,10 +1,16 @@
 #------------------------------------------------------ SERVER CONFIGURATION ---------------------------------------------------------
 server:
   port: ${SERVER_PORT:3232}
+  shutdown: immediate
 
 spring:
   application:
     name: reactive-ollama-api
+  #------------------------------------------------------ RSOCKET CONFIGURATION ---------------------------------------------------------
+  rsocket:
+    server:
+      transport: websocket
+      mapping-path: /rsocket
   #------------------------------------------------------ DATASOURCE CONFIGURATION ---------------------------------------------------------
   r2dbc:
     username: ${DB_USERNAME:}
@@ -37,6 +43,11 @@ spring:
           user: ${spring.application.name}
     ollama:
       base-url: ${AI_OLLAMA_BASE_URL:http://localhost:11434}
+    replicate:
+      base-url: ${AI_REPLICATE_BASE_URL:https://api.replicate.com}
+      webhook-base-url: ${AI_REPLICATE_WEBHOOK_BASE_URL:}
+      api-key: ${AI_REPLICATE_API_KEY:}
+      model: ${AI_REPLICATE_MODEL:bytedance/seedream-4}
 #------------------------------------------------------ SWAGGER CONFIGURATION ---------------------------------------------------------
 springdoc:
   api-docs:
@@ -44,3 +55,12 @@ springdoc:
   swagger-ui:
     enabled: ${SWAGGER_ENABLED:false}
     path: /swagger
+
+logging:
+  level:
+    org:
+      springframework:
+        messaging:
+          rsocket: DEBUG
+    io:
+      rsocket: DEBUG
